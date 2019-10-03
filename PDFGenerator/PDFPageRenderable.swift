@@ -85,9 +85,7 @@ extension UIView: PDFPageRenderable {
             }
         }
         
-        if let webView = self as? UIWebView {
-            try renderScrollView(webView.scrollView, area: area)
-        } else if let webView = self as? WKWebView {
+        if let webView = self as? WKWebView {
             try renderScrollView(webView.scrollView, area: area)
         } else if let scrollView = self as? UIScrollView {
             try renderScrollView(scrollView, area: area)
@@ -98,8 +96,6 @@ extension UIView: PDFPageRenderable {
     
     fileprivate func getPageSize() -> CGSize {
         switch self {
-        case (let webView as UIWebView):
-            return webView.scrollView.contentSize
         case (let webView as WKWebView):
             return webView.scrollView.contentSize
         case (let scrollView as UIScrollView):
